@@ -1,0 +1,65 @@
+Agendador VB 0.95 Beta
+----------------------
+
+Por W. Staeblein
+http://www.codex.com.br
+
+Este programa e a classe que o acompanham são um exemplo de implementação de um agendador de tarefas simples em VB. O programa AgendadorVB.exe deve ser iniciado junto com o computador (vide método Add2StartUp). A classe cAgendador serve para fazer o seu programa se comunicar com o agendador.
+
+As tarefas são armazendadas no registro e a classe usa a API SendMessage para estabelecer a comunicação com o AgendadorVB.exe. Com ela vc pode criar, apagar e executar tarefas. Abaixo está uma descrição dos métodos e propriedades.
+
+Add2StartUp(Optional DoIt As Boolean = True)
+Adiciona / Remove AgendadorVB.exe do Startup da máquina, dependendo do Argumento DoIt.
+
+Arquivo
+Nome do Arquivo a ser executado numa tarefa
+
+Dia
+Número do Dia. Depende do valor da propriedade Frequencia. Se esta for 1 ou 2 (Manual ou Diario)  Dia não é considerado, se for 3 (Semanal) dia é um número de 1 a 7 correspondendo aos dias da semanda de Domingo a Sábado, se for 4 (Mensal) Dia é um valor de 1 a 31 correspondendo aos dias do mês.
+
+Execute(Nome As String)
+Executa a tarefa cujo nome for especificado no parâmetro Nome agora.
+
+Frequencia
+Estabelece a frequencia a qual uma tarefa é executada. Pode ser:
+1- Manual
+2- Diaria
+3- Semanal
+4- mensal
+
+Hora
+Numero indicando a hora que uma tarefa deve ser executada
+
+IsRunning
+Retorna True se o AgendadorVB estiver rodando
+
+LastRun
+Retorna a hora cuja tarefa rodou pela última vez
+
+List
+Retorna array com os nomes das tarefas. Facilitando assim o manuseio.
+
+Minuto
+Número indicando em que minuto da hora especificada na propriedade Hora a tarefa deve ser executada
+
+Remove
+Remove Tarefa do Agendador
+
+Save
+Salva a tarefa atual no agendador
+
+StartDate
+Define a data inicial da tarefa, ou seja, ela só será executada pela primeira vez após esta data.
+
+TaskName
+Define a tarefa atual pelo nome da tarefa.
+
+Terminate
+Termina a execução do AgendadorVB
+
+WinHandle
+Hwnd da Janela onde a classe foi instânciada. Deve ser a primeira coisa a ser feita após o instanciamento da classe.
+
+
+Para um melhor entendimento veja o projeto exemplo
+

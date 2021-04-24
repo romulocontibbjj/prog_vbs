@@ -1,0 +1,779 @@
+Public Sub imprime_min1(xfilialctc As String)
+    Dim xVias As Integer, xLin As Integer, xcgc1 As String, xcgc2 As String,
+xie1 As String, xie2 As String
+    Dim xredesp_end As String, xredesp_cidadeuf As String, xredesp_cep As
+String, xvia As String
+    Dim xobs1 As String, xobs2 As String, xobs3 As String, xobs4 As String,
+xobs5 As String, xobs6 As String
+    Dim xNf1 As String, xNf2 As String, xNf3 As String, ximpr_cfg As String,
+ximpr_inst As Printer, xlinha As String
+
+
+    'busca impressora para este documento
+    If Dir(App.Path & "\informa.cfg") <> "" Then
+
+        Open App.Path & "\informa.cfg" For Input As #1
+
+        Do Until EOF(1)
+            Line Input #1, xlinha
+            If Mid$(xlinha, 1, 3) = "CTR" Then
+                ximpr_cfg = Trim$(Mid$(xlinha, 5))
+                Exit Do
+            End If
+        Loop
+
+        Close #1
+
+    Else
+
+        MsgBox "Não está Configurado a Impressora para Este Documento: CTR "
+& xfilialctc
+        Exit Sub
+
+    End If
+
+    'seta impressora
+
+    For Each ximpr_inst In Printers
+        If ximpr_inst.DeviceName = ximpr_cfg Then
+            Set Printer = ximpr_inst
+            DoEvents
+            Exit For
+        End If
+    Next
+
+    'BUSCA A MINUTA A SER IMPRESSAO
+    If de_informa.rsSel_MinutaCTC.State = 1 Then
+de_informa.rsSel_MinutaCTC.Close
+    de_informa.Sel_MinutaCTC xfilialctc
+
+    If de_informa.rsSel_MinutaCTC.RecordCount < 1 Then
+        MsgBox "Minuta Para Impressão Inexistente !"
+        Exit Sub
+    End If
+
+    For xVias = 1 To 2  'DUAS VIAS
+        Printer.FontName = "Courier New"
+
+        Printer.FontSize = 3
+        Printer.Print
+
+        'TÍTULOS / NUMERAÇÃO / DATA / HORA / EMISSOR
+
+        Printer.FontSize = 6
+        Printer.Print Spc(24); "INTEC-Integração Nacional de Transportes de
+Encom. e Cargas Ltda";
+        Printer.FontSize = 8
+        Printer.FontBold = True
+        Printer.Print Spc(5); " CTR - CONTROLE DE TRANSPORTE RODOVIÁRIO "
+        Printer.FontBold = False
+        Printer.FontSize = 6
+        Printer.Print Spc(24); "AV. MARG. DIREITA DO RIO TIETÊ, 504 -
+BARUERI/SP - CEP 06455-050";
+        Printer.FontSize = 8
+        Printer.Print Spc(2); "NÚMERO: ";
+        Printer.FontBold = True
+        Printer.Print Mid$(xfilialctc, 1, 2) & "-" & Mid(xfilialctc, 3)
+        Printer.FontBold = False
+        Printer.FontSize = 6
+        Printer.Print Spc(24); "CNPJ: 52.134.798-0001-68
+INSCR.ESTADUAL: 206.182.910.118";
+        Printer.FontSize = 8
+        If xVias = 1 Then
+            Printer.Print Spc(2);
+Mid$(de_informa.rsSel_MinutaCTC.Fields("modal"), 1, 1) & "
+1ª VIA"
+        ElseIf xVias = 2 Then
+            Printer.Print Spc(2);
+Mid$(de_informa.rsSel_MinutaCTC.Fields("modal"), 1, 1) & "
+2ª VIA"
+        End If
+        Printer.FontSize = 6
+        Printer.Print Spc(24); "TELEFONES: (11) 4689-7575 / 4193-5921
+www.intec.com.br";
+        Printer.FontSize = 8
+        Printer.Print Spc(2); "DATA/HS/EMISSOR: " &
+zeros(Day(de_informa.rsSel_MinutaCTC.Fields("data")), 2) & "/" & _
+
+zeros(Month(de_informa.rsSel_MinutaCTC.Fields("data")), 2) & "/" & _
+
+zeros(Year(de_informa.rsSel_MinutaCTC.Fields("data")), 4) & "  " & _
+
+de_informa.rsSel_MinutaCTC.Fields("hora") & "  " & _
+
+de_informa.rsSel_MinutaCTC.Fields("emissor")
+
+        'DADOS DO REMETENTE / DESTINATÁRIO
+
+        Printer.FontSize = 6
+        Printer.Print
+        Printer.FontSize = 8
+
+        Printer.Print " REMETENTE   : ";
+de_informa.rsSel_MinutaCTC.Fields("remet_nome") & _
+                                        String(42 -
+Len(de_informa.rsSel_MinutaCTC.Fields("remet_nome")), " ");
+
+        Printer.Print Spc(3); "DESTINATÁRIO: ";
+de_informa.rsSel_MinutaCTC.Fields("dest_nome") & _
+                                        String(42 -
+Len(de_informa.rsSel_MinutaCTC.Fields("dest_nome")), " ")
+
+        Printer.Print " ENDEREÇO    : ";
+de_informa.rsSel_MinutaCTC.Fields("remet_end") & _
+                                        String(42 -
+Len(de_informa.rsSel_MinutaCTC.Fields("remet_end")), " ");
+
+        Printer.Print Spc(3); "ENDEREÇO    : ";
+de_informa.rsSel_MinutaCTC.Fields("dest_end") & _
+                                        String(42 -
+Len(de_informa.rsSel_MinutaCTC.Fields("dest_end")), " ")
+
+        Printer.Print " CIDADE-UF   : ";
+Trim$(de_informa.rsSel_MinutaCTC.Fields("remet_cidade")) & _
+                                         "-" &
+de_informa.rsSel_MinutaCTC.Fields("remet_uf") & _
+                                         String(42 - 3 -
+Len(de_informa.rsSel_MinutaCTC.Fields("remet_cidade")), " ");
+
+        Printer.Print Spc(3); "CIDADE-UF   : ";
+Trim$(de_informa.rsSel_MinutaCTC.Fields("dest_cidade")) & _
+                                         "-" &
+de_informa.rsSel_MinutaCTC.Fields("dest_uf") & _
+                                         String(42 - 3 -
+Len(de_informa.rsSel_MinutaCTC.Fields("dest_cidade")), " ")
+
+        Printer.Print " CEP         : ";
+de_informa.rsSel_MinutaCTC.Fields("remet_cep") & _
+                                        String(42 -
+Len(de_informa.rsSel_MinutaCTC.Fields("remet_cep")), " ");
+
+        Printer.Print Spc(3); "CEP         : ";
+de_informa.rsSel_MinutaCTC.Fields("dest_cep") & _
+                                        String(42 -
+Len(de_informa.rsSel_MinutaCTC.Fields("dest_cep")), " ")
+
+        'BUSCA DEMAIS DADOS DO REMETENTE
+        If de_informa.rsSel_CadCliCGC.State = 1 Then
+de_informa.rsSel_CadCliCGC.Close
+        de_informa.Sel_CadCliCGC
+de_informa.rsSel_MinutaCTC.Fields("remet_cgc")
+
+        'IE + FORMATAÇÃO
+        If Len(Trim$(de_informa.rsSel_CadCliCGC.Fields("ie"))) > 0 Then
+            If IsNumeric(de_informa.rsSel_CadCliCGC.Fields("ie")) Then
+                xie1 = Format(de_informa.rsSel_CadCliCGC.Fields("ie"),
+"@@@.@@@.@@@.@@@")
+            Else
+                xie1 = de_informa.rsSel_CadCliCGC.Fields("ie") & _
+                    String(15 -
+Len(de_informa.rsSel_CadCliCGC.Fields("ie")), " ")
+            End If
+        Else
+            xie1 = String(15, " ")
+        End If
+
+        'CGC + FORMATAÇÃO
+        If
+Len(Trim$(Str(CDbl(de_informa.rsSel_MinutaCTC.Fields("remet_cgc"))))) > 11
+Then
+            xcgc1 = Format(de_informa.rsSel_MinutaCTC.Fields("remet_cgc"),
+"@@.@@@.@@@/@@@@-@@")
+        Else
+            xcgc1 = de_informa.rsSel_MinutaCTC.Fields("remet_cgc")
+        End If
+
+        'BUSCA DEMAIS DADOS DO DESTINATÁRIO
+        If de_informa.rsSel_CadCliCGC.State = 1 Then
+de_informa.rsSel_CadCliCGC.Close
+        de_informa.Sel_CadCliCGC
+de_informa.rsSel_MinutaCTC.Fields("dest_cgc")
+
+        'IE + FORMATAÇÃO
+        If Len(Trim$(de_informa.rsSel_CadCliCGC.Fields("ie"))) > 0 Then
+            If IsNumeric(de_informa.rsSel_CadCliCGC.Fields("ie")) Then
+                xie2 = Format(de_informa.rsSel_CadCliCGC.Fields("ie"),
+"@@@.@@@.@@@.@@@")
+            Else
+                xie2 = Trim$(de_informa.rsSel_CadCliCGC.Fields("ie")) & _
+                    String(15 -
+Len(Trim$(de_informa.rsSel_CadCliCGC.Fields("ie"))), " ")
+            End If
+        Else
+            xie2 = String(15, " ")
+        End If
+
+        'CGC + FORMATAÇÃO
+        If
+Len(Trim$(Str(CDbl(de_informa.rsSel_MinutaCTC.Fields("dest_cgc"))))) > 11
+Then
+            xcgc2 = Format(de_informa.rsSel_MinutaCTC.Fields("dest_cgc"),
+"@@.@@@.@@@/@@@@-@@")
+        Else
+            xcgc2 = de_informa.rsSel_MinutaCTC.Fields("dest_cgc")
+        End If
+
+        'IMPRIME A LINHA
+        Printer.Print " INSCR.EST   : "; xie1 & "   CNPJ: " & xcgc1;
+        Printer.Print Spc(3); "INSCR.EST   : "; xie2 & " CNPJ: " & xcgc2
+
+        Printer.Print
+
+        'DADOS DO CONSIGNATÁRIO E DO REDESPACHO
+
+        Printer.Print " CONSIGNAT.  : ";
+de_informa.rsSel_MinutaCTC.Fields("respons_nome") & _
+                                        String(42 -
+Len(de_informa.rsSel_MinutaCTC.Fields("respons_nome")), " ");
+
+        If Len(Trim$(de_informa.rsSel_MinutaCTC.Fields("redesp_nome"))) > 0
+Then
+            If de_informa.rsSel_CadSubContCGC.State = 1 Then
+de_informa.rsSel_CadSubContCGC.Close
+            de_informa.Sel_CadSubContCGC
+de_informa.rsSel_MinutaCTC.Fields("redesp_cgc")
+            Printer.Print Spc(3); "REDESPACHO  : ";
+de_informa.rsSel_CadSubContCGC.Fields("nome") & _
+                                        String(42 -
+Len(de_informa.rsSel_CadSubContCGC.Fields("nome")), " ")
+        Else
+            Printer.Print Spc(3); "REDESPACHO  : "
+        End If
+
+        'BUSCA DEMAIS DADOS DO CONSIGNATÁRIO
+
+        If de_informa.rsSel_CadCliCGC.State = 1 Then
+de_informa.rsSel_CadCliCGC.Close
+        de_informa.Sel_CadCliCGC
+de_informa.rsSel_MinutaCTC.Fields("respons_cgc")
+
+        '(IE / CGC) + FORMATAÇÃO
+        If Len(Trim$(de_informa.rsSel_CadCliCGC.Fields("ie"))) > 0 Then
+            If IsNumeric(de_informa.rsSel_CadCliCGC.Fields("ie")) Then
+                xie1 = Format(de_informa.rsSel_CadCliCGC.Fields("ie"),
+"@@@.@@@.@@@.@@@")
+            Else
+                xie1 = de_informa.rsSel_CadCliCGC.Fields("ie") & _
+                    String(15 -
+Len(de_informa.rsSel_CadCliCGC.Fields("ie")), " ")
+            End If
+        Else
+            xie1 = String(15, " ")
+        End If
+
+        'CGC
+        If
+Len(Trim$(Str(CDbl(de_informa.rsSel_MinutaCTC.Fields("respons_cgc"))))) > 11
+Then
+            xcgc1 = Format(de_informa.rsSel_MinutaCTC.Fields("respons_cgc"),
+"@@.@@@.@@@/@@@@-@@")
+        Else
+            xcgc1 = de_informa.rsSel_MinutaCTC.Fields("respons_cgc")
+        End If
+
+        'BUSCA DEMAIS DADOS DO REDESPACHO
+        If Len(Trim$(de_informa.rsSel_MinutaCTC.Fields("redesp_nome"))) > 0
+Then
+            If de_informa.rsSel_CadSubContCGC.State = 1 Then
+de_informa.rsSel_CadSubContCGC.Close
+            de_informa.Sel_CadSubContCGC
+de_informa.rsSel_MinutaCTC.Fields("redesp_cgc")
+
+            'endereço
+            xredesp_end = de_informa.rsSel_CadSubContCGC.Fields("endereco")
+& _
+                        String(42 -
+Len(de_informa.rsSel_CadSubContCGC.Fields("endereco")), " ")
+            xredesp_cidadeuf =
+de_informa.rsSel_CadSubContCGC.Fields("cidade") & "-" & _
+                               de_informa.rsSel_CadSubContCGC.Fields("uf") &
+_
+                               String(42 - 3 -
+Len(de_informa.rsSel_CadSubContCGC.Fields("cidade")), " ")
+            xredesp_cep = de_informa.rsSel_CadSubContCGC.Fields("cep") & _
+                          String(42 -
+Len(de_informa.rsSel_CadSubContCGC.Fields("cep")), " ")
+
+            'cgc
+            If
+Len(Trim$(Str(CDbl(de_informa.rsSel_MinutaCTC.Fields("redesp_cgc"))))) = 8
+Then
+                xcgc2 =
+Format(de_informa.rsSel_MinutaCTC.Fields("redesp_cgc"), "@@.@@@.@@@")
+            ElseIf
+Len(Trim$(Str(CDbl(de_informa.rsSel_MinutaCTC.Fields("redesp_cgc"))))) > 8
+And _
+
+Len(Trim$(Str(CDbl(de_informa.rsSel_MinutaCTC.Fields("redesp_cgc"))))) < 12
+Then
+                xcgc2 =
+Format(de_informa.rsSel_MinutaCTC.Fields("redesp_cgc"), "@@@.@@@.@@@-@@")
+            ElseIf
+Len(Trim$(Str(CDbl(de_informa.rsSel_MinutaCTC.Fields("redesp_cgc"))))) > 11
+Then
+                xcgc2 =
+Format(de_informa.rsSel_MinutaCTC.Fields("redesp_cgc"),
+"@@.@@@.@@@/@@@@-@@")
+            Else
+                xcgc2 =
+Format(de_informa.rsSel_MinutaCTC.Fields("redesp_cgc"), "@@@@@@@@@@@@")
+            End If
+
+        Else
+
+            xredesp_end = String(42, " ")
+            xredesp_cidadeuf = String(42, " ")
+            xredesp_cep = String(42, " ")
+            xcgc2 = String(42, " ")
+
+        End If
+
+        Printer.Print " ENDEREÇO    : ";
+de_informa.rsSel_CadCliCGC.Fields("endereco") & _
+                                        String(42 -
+Len(de_informa.rsSel_CadCliCGC.Fields("endereco")), " ");
+
+        Printer.Print Spc(3); "ENDEREÇO    : "; xredesp_end
+
+        Printer.Print " CIDADE-UF   : ";
+Trim$(de_informa.rsSel_CadCliCGC.Fields("cidade")) & _
+                                         "-" &
+de_informa.rsSel_CadCliCGC.Fields("uf") & _
+                                         String(42 - 3 -
+Len(de_informa.rsSel_CadCliCGC.Fields("cidade")), " ");
+
+        Printer.Print Spc(3); "CIDADE-UF   : "; xredesp_cidadeuf
+
+        Printer.Print " CEP         : ";
+de_informa.rsSel_CadCliCGC.Fields("cep") & _
+                                        String(42 -
+Len(de_informa.rsSel_CadCliCGC.Fields("cep")), " ");
+
+        Printer.Print Spc(3); "CEP         : "; xredesp_cep
+
+        Printer.Print " INSCR.EST   : "; xie1 & "   " & "CNPJ: " & xcgc1;
+
+        Printer.Print Spc(3); "CNPJ/CPF    : "; xcgc2
+
+        Printer.Print
+
+        Printer.FontBold = True
+        Printer.Print "                                    M E R C A D O R I
+A    T R A N S P O R T A D A"
+        Printer.FontBold = False
+
+        Printer.Print "                 NATUREZA DA CARGA
+VOLS         ESPÉCIE       PESO(KG)  M3-I       VALOR MERC."
+        Printer.Print
+
+        'DADOS DA MERCADORIA
+
+        Printer.Print " " & de_informa.rsSel_MinutaCTC.Fields("natureza") &
+"/" & _
+                            de_informa.rsSel_MinutaCTC.Fields("naturezaobs")
+& _
+                            String(50 -
+Len(de_informa.rsSel_MinutaCTC.Fields("natureza") & "/" & _
+
+de_informa.rsSel_MinutaCTC.Fields("naturezaobs")), " ");
+
+        Printer.Print " " & String(7 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("volumes"), "###,###")), " ") &
+_
+
+Format(de_informa.rsSel_MinutaCTC.Fields("volumes"), "###,###");
+
+        Printer.Print "  " & de_informa.rsSel_MinutaCTC.Fields("especie") &
+_
+                            String(20 -
+Len(de_informa.rsSel_MinutaCTC.Fields("especie")), " ");
+
+        Printer.Print " " & String(7 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("peso"), "#,##0.0")), " ") & _
+
+Format(de_informa.rsSel_MinutaCTC.Fields("peso"), "#,##0.0");
+
+
+        Printer.Print "  " & String(7 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("pesotax"), "#,##0.0")), " ") &
+_
+
+Format(de_informa.rsSel_MinutaCTC.Fields("pesotax"), "#,##0.0");
+
+
+        Printer.Print " " & String(17 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("valmerc"), "##,###,##0.00")),
+" ") & _
+
+Format(de_informa.rsSel_MinutaCTC.Fields("valmerc"), "##,###,##0.00")
+
+        Printer.Print
+
+        'NOTAS FISCAIS DA MINUTA
+
+        If Len(Trim$(de_informa.rsSel_MinutaCTC.Fields("nfs"))) <= 100 Then
+            xNf1 = Trim$(de_informa.rsSel_MinutaCTC.Fields("nfs"))
+            xNf2 = ""
+            xNf3 = ""
+        Else
+            If Len(Trim$(de_informa.rsSel_MinutaCTC.Fields("nfs"))) <= 200
+Then
+                xNf1 = Mid$(Trim$(de_informa.rsSel_MinutaCTC.Fields("nfs")),
+1, 100)
+                xNf2 = Mid$(Trim$(de_informa.rsSel_MinutaCTC.Fields("nfs")),
+101)
+                xNf3 = ""
+            Else
+                xNf1 = Mid$(Trim$(de_informa.rsSel_MinutaCTC.Fields("nfs")),
+1, 100)
+                xNf2 = Mid$(Trim$(de_informa.rsSel_MinutaCTC.Fields("nfs")),
+101, 200)
+                xNf3 = Mid$(Trim$(de_informa.rsSel_MinutaCTC.Fields("nfs")),
+201)
+            End If
+        End If
+
+        Printer.Print " NOTAS FISCAIS: " & xNf1
+        Printer.Print "                " & xNf2
+        Printer.Print "                " & xNf3
+
+        'DADOS DO FRETE
+
+        Printer.FontBold = True
+        Printer.Print "                                       C O M P O S I
+Ç Ã O    D O    F R E T E"
+        Printer.FontBold = False
+
+        Printer.Print "  FRETE PESO    FRETE VALOR      GRIS       COLETA
+ENTR/REDESP. URGÊNCIA   PEDÁGIO     OUTROS      VALOR TOTAL"
+
+        Printer.Print
+
+        Printer.Print "   " & String(10 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("fretepeso"), "###,##0.00")), "
+") & _
+
+Format(de_informa.rsSel_MinutaCTC.Fields("fretepeso"), "###,##0.00");
+
+        Printer.Print "     " & String(10 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("fretevalor"), "###,##0.00")),
+" ") & _
+
+Format(de_informa.rsSel_MinutaCTC.Fields("fretevalor"), "###,##0.00");
+
+        Printer.Print "   " & String(9 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("gris"), "##,##0.00")), " ") &
+_
+
+Format(de_informa.rsSel_MinutaCTC.Fields("gris"), "##,##0.00");
+
+        Printer.Print "  " & String(9 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("txcoleta"), "##,##0.00")), "
+") & _
+
+Format(de_informa.rsSel_MinutaCTC.Fields("txcoleta"), "##,##0.00");
+
+        Printer.Print "    " & String(9 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("txentregared"), "##,##0.00")),
+" ") & _
+
+Format(de_informa.rsSel_MinutaCTC.Fields("txentregared"), "##,##0.00");
+
+        Printer.Print "  " & String(9 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("txurgencia"), "##,##0.00")), "
+") & _
+
+Format(de_informa.rsSel_MinutaCTC.Fields("txurgencia"), "##,##0.00");
+
+        Printer.Print "  " & String(9 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("pedagio"), "##,##0.00")), " ")
+& _
+
+Format(de_informa.rsSel_MinutaCTC.Fields("pedagio"), "##,##0.00");
+
+        Printer.Print "  " & String(9 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("txoutros"), "##,##0.00")), "
+") & _
+
+Format(de_informa.rsSel_MinutaCTC.Fields("txoutros"), "##,##0.00");
+
+        Printer.Print "    " & String(13 -
+Len(Format(de_informa.rsSel_MinutaCTC.Fields("fretetotal"),
+"##,###,##0.00")), " ") & _
+
+Format(de_informa.rsSel_MinutaCTC.Fields("fretetotal"), "##,###,##0.00")
+
+        Printer.Print
+
+        If Len(Trim$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"))) > 0
+Then
+            If Len(Trim$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao")))
+<= 55 Then
+                xobs1 =
+Trim$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao")) & _
+                        String(55 -
+Len(Trim(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"))), " ")
+                xobs2 = String(68, " ")
+                xobs3 = String(68, " ")
+                xobs4 = String(68, " ")
+                xobs5 = String(68, " ")
+            Else
+                If
+Len(Trim$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"))) <= 123 Then
+                    xobs1 =
+Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 1, 55)
+                    xobs2 =
+Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 56)) & _
+                            String(68 -
+Len(Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 56))), " ")
+                    xobs3 = String(68, " ")
+                    xobs4 = String(68, " ")
+                    xobs5 = String(68, " ")
+                Else
+                    If
+Len(Trim$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"))) <= 191 Then
+                        xobs1 =
+Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 1, 55)
+                        xobs2 =
+Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 56, 68))
+                        xobs3 =
+Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 124)) & _
+                                String(68 -
+Len(Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 124))), "
+")
+                        xobs4 = String(68, " ")
+                        xobs5 = String(68, " ")
+                    Else
+                        If
+Len(Trim$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"))) <= 259 Then
+                            xobs1 =
+Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 1, 55)
+                            xobs2 =
+Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 56, 68))
+                            xobs3 =
+Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 124, 68))
+                            xobs4 =
+Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 192)) & _
+                                    String(68 -
+Len(Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 192))), "
+")
+                            xobs5 = String(68, " ")
+                        Else
+                            xobs1 =
+Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 1, 55)
+                            xobs2 =
+Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 56, 68))
+                            xobs3 =
+Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 124, 68))
+                            xobs4 =
+Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 192, 68))
+                            xobs5 =
+Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 260)) & _
+                                    String(68 -
+Len(Trim$(Mid$(de_informa.rsSel_MinutaCTC.Fields("obs_emissao"), 260))), "
+")
+                        End If
+                    End If
+                End If
+            End If
+        Else
+            xobs1 = String(55, " ")
+            xobs2 = String(68, " ")
+            xobs3 = String(68, " ")
+            xobs4 = String(68, " ")
+            xobs5 = String(68, " ")
+        End If
+
+        Printer.FontBold = True
+        Printer.Print " OBSERVAÇÕES: ";
+        Printer.FontBold = False
+
+        Printer.Print xobs1;
+
+        Printer.Print "  COLETA:  " &
+de_informa.rsSel_MinutaCTC.Fields("cidade_orig") & "-" & _
+
+de_informa.rsSel_MinutaCTC.Fields("uf_orig")
+        Printer.Print " " & xobs2
+
+        Printer.Print " " & xobs3;
+
+        Printer.Print "  ENTREGA: " &
+de_informa.rsSel_MinutaCTC.Fields("cidade_dest") & "-" & _
+
+de_informa.rsSel_MinutaCTC.Fields("uf_dest")
+
+        Printer.Print " " & xobs4
+
+        Printer.Print " " & xobs5;
+
+        'BUSCA A VIA / LOCALIDADE
+
+        If Len(de_informa.rsSel_MinutaCTC.Fields("via")) = 3 Then
+
+            If de_informa.rsSel_CadLocalidadeSigla.State = 1 Then
+de_informa.rsSel_CadLocalidadeSigla.Close
+            de_informa.Sel_CadLocalidadeSigla
+de_informa.rsSel_MinutaCTC.Fields("via")
+
+
+            xvia = de_informa.rsSel_MinutaCTC.Fields("via") & "-" &
+de_informa.rsSel_CadLocalidadeSigla.Fields("localidade")
+        Else
+            xvia = "       "
+        End If
+
+        Printer.Print "  VIA:     " & xvia
+
+        Printer.Print
+        Printer.Print
+        Printer.Print
+        Printer.FontBold = True
+        Printer.Print "                         R E C E B I M E N T O"
+        Printer.FontBold = False
+        Printer.Print
+        Printer.Print " NOME: "
+        Printer.Print
+        Printer.Print " Nº RG:"
+        Printer.Print "
+______________________"
+        Printer.Print " DATA/HORA:
+ASSINATURA"
+
+        If xVias = 1 Then
+            Printer.Print
+            Printer.Print
+            Printer.Print
+            Printer.Print
+        End If
+
+    Next
+
+
+'MODO GRÁFICO / LINHAS / QUADROS / LOGO
+
+
+    For xVias = 1 To 2
+
+        If xVias = 1 Then
+            xLin = 0
+            Printer.DrawStyle = 0
+            Printer.ForeColor = &H80000008  'PRETO
+            Printer.DrawWidth = 8
+            Printer.DrawMode = 9
+        ElseIf xVias = 2 Then
+            xLin = 8440
+        End If
+
+
+
+        Printer.ForeColor = &HC0C0C0     'CINZA
+        Printer.Line (6430, 0 + xLin)-(11210, 240 + xLin), , BF 'MINUTA DE
+TRANS RODOVIARIO
+
+        Printer.ForeColor = &H80000008   'PRETO
+        Printer.Line (0, 0 + xLin)-(6430, 820 + xLin), , B 'QUADRO LOGO +
+ENDERECO INTEC
+        Printer.Line (6430, 0 + xLin)-(11210, 820 + xLin), , B 'QUADRO
+MINUTA DE TRANSP, NUMERO DA MINUTA DATA, EMISSOR, ETC
+        Printer.Line (6430, 240 + xLin)-(11210, 240 + xLin) 'LINHA DIVIDE
+MINUTA TRANSP E DADOS DE MUNERO, EMISSOR ETC
+
+        Printer.PaintPicture frmLogo.piclogo.Picture, 80, 100 + xLin,
+frmLogo.piclogo.Picture.Width * 0.068, frmLogo.piclogo.Picture.Height *
+0.068
+
+        Printer.Line (0, 820 + xLin)-(5620, 1850 + xLin), , B 'QUADRO
+REMETENTE
+        Printer.Line (5620, 820 + xLin)-(11210, 1850 + xLin), , B 'QUADRO
+DESTINATARIO
+        Printer.Line (0, 1850 + xLin)-(5620, 2930 + xLin), , B 'QUADRO
+CONSIGNATÁRIO
+        Printer.Line (5620, 1850 + xLin)-(11210, 2930 + xLin), , B 'QUADRO
+REDESPACHO
+
+        Printer.ForeColor = &HC0C0C0     'CINZA
+        Printer.Line (0, 2930 + xLin)-(11210, 3120 + xLin), , BF 'TITULO
+MERCADORIA TRANSPORTADA  (CINZA PREENCHIDO)
+
+        Printer.ForeColor = &H80000008   'PRETO    '
+        Printer.Line (0, 2930 + xLin)-(11210, 3120 + xLin), , B 'TITULO
+MERCADORIA TRANSPORTADA  (QUADRO)
+
+
+        Printer.Line (0, 3120 + xLin)-(11210, 3360 + xLin), , B 'SUB-TITULOS
+DA MERCAD. TRANSP (NATUREZA, ESPECIE, ETC)
+        Printer.Line (0, 3360 + xLin)-(11210, 3750 + xLin), , B 'OS DADOS
+
+        'LINHA VERTICAIS SEPARANDO OS DADOS
+        Printer.Line (5030, 3120 + xLin)-(5030, 3750 + xLin), , B
+        Printer.Line (5740, 3120 + xLin)-(5740, 3750 + xLin), , B
+        Printer.Line (7740, 3120 + xLin)-(7740, 3750 + xLin), , B
+        Printer.Line (8550, 3120 + xLin)-(8550, 3750 + xLin), , B
+        Printer.Line (9440, 3120 + xLin)-(9440, 3750 + xLin), , B
+
+        Printer.Line (0, 3750 + xLin)-(11210, 4300 + xLin), , B 'NOTAS
+FISCAIS (QUADRO)
+        Printer.Line (1480, 3750 + xLin)-(1480, 4300 + xLin), , B 'NOTAS
+FISCAIS (LINHA SEPARADORA)
+
+
+        Printer.ForeColor = &HC0C0C0     'CINZA
+        Printer.Line (0, 4300 + xLin)-(11210, 4490 + xLin), , BF 'TITULO
+COMPOSIÇÃO DO FRETE  (CINZA PREENCHIDO)
+
+        Printer.ForeColor = &H80000008   'PRETO    '
+        Printer.Line (0, 4300 + xLin)-(11210, 4490 + xLin), , B 'TITULO
+COMPOSIÇÃO DO FRETE (QUADRO)
+
+
+        Printer.Line (0, 4490 + xLin)-(11210, 4730 + xLin), , B 'SUB-TITULOS
+DA COMPOS FRETE (FRETE PESO, FRETE VALOR, ETC)
+        Printer.Line (0, 4730 + xLin)-(11210, 5120 + xLin), , B 'OS DADOS
+
+        'LINHA VERTICAIS SEPARANDO OS DADOS
+        Printer.Line (1400, 4490 + xLin)-(1400, 5120 + xLin), , B
+        Printer.Line (2800, 4490 + xLin)-(2800, 5120 + xLin), , B
+        Printer.Line (3950, 4490 + xLin)-(3950, 5120 + xLin), , B
+        Printer.Line (5050, 4490 + xLin)-(5050, 5120 + xLin), , B
+        Printer.Line (6230, 4490 + xLin)-(6230, 5120 + xLin), , B
+        Printer.Line (7250, 4490 + xLin)-(7250, 5120 + xLin), , B
+        Printer.Line (8300, 4490 + xLin)-(8300, 5120 + xLin), , B
+        Printer.Line (9400, 4490 + xLin)-(9400, 5120 + xLin), , B
+
+        Printer.Line (0, 5120 + xLin)-(6750, 6500 + xLin), , B  'OBSERVAÇÃO
+        Printer.Line (6750, 5120 + xLin)-(7610, 5450 + xLin), , B 'COLETA
+        Printer.Line (7610, 5120 + xLin)-(11210, 5450 + xLin), , B 'DADO
+COLETA
+        Printer.Line (6750, 5450 + xLin)-(7610, 5780 + xLin), , B 'ENTREGA
+        Printer.Line (7610, 5450 + xLin)-(11210, 5780 + xLin), , B 'DADO
+ENTREGA
+        Printer.Line (6750, 5780 + xLin)-(7610, 6100 + xLin), , B 'VIA
+        Printer.Line (7610, 5780 + xLin)-(11210, 6100 + xLin), , B 'DADO VIA
+
+
+        Printer.ForeColor = &HC0C0C0     'CINZA
+        Printer.Line (0, 6500 + xLin)-(6750, 6770 + xLin), , BF 'TÍTULO
+RECEBIMENTO (CINZA PREENCHIDO)
+        Printer.ForeColor = &H80000008   'PRETO    '
+        Printer.Line (0, 6500 + xLin)-(6750, 6770 + xLin), , B 'TÍTULO
+RECEBIMENTO (QUADRO)
+
+        Printer.Line (0, 6770 + xLin)-(6750, 7820 + xLin), , B 'POD
+
+        Printer.PaintPicture frmLogo.Picture1, 7470, 6530 + xLin,
+frmLogo.Picture1.Picture.Width * 0.37, frmLogo.Picture1.Picture.Height * 0.5
+'BARCODE
+
+        Printer.Line (6750, 5780 + xLin)-(11210, 7820 + xLin), , B 'COD
+BARRA quadro
+
+        'impresso SIM
+        de_informa.Alt_ImpressoSimCTR xusuario, xfilialctc
+
+    Next
+
+    Printer.EndDoc
+
+End Sub
+

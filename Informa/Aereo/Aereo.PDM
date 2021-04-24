@@ -1,0 +1,188 @@
+[Root]
+Most Recent Package=Standard Setup Package 1
+
+
+[Package|Standard Setup Package 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=F:\Informa\SysAereo
+
+[Package|Standard Setup Package 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 1|Files Found]
+
+[Package|Standard Setup Package 1|Files Released]
+
+[Package|Standard Setup Package 1|Missing Dependency Information]
+C:\Arquivos de programas\Arquivos comuns\SYSTEM\ADO\msado25.tlb=
+C:\WINDOWS\system32\MSHFLXGD.OCX=
+C:\Arquivos de programas\Microsoft Office\Office\EXCEL9.OLB=
+C:\WINDOWS\system32\MSDBRPTR.DLL=
+C:\WINDOWS\system32\MSSTDFMT.DLL=
+C:\WINDOWS\system32\MSBIND.DLL=
+C:\WINDOWS\system32\msado25.tlb=
+C:\Arquivos de programas\Arquivos comuns\Designer\MSDERUN.DLL=
+
+[Package|Standard Setup Package 1|Out-of-Date Dependency Information]
+
+[Package|Standard Setup Package 1|Files Added]
+f:\aereo\sistema aéreo\aereo 001.jpg=
+f:\aereo\sistema aéreo\atualiza sistema aereo.bat=
+f:\aereo\sistema aéreo\aereo 002.jpg=
+f:\aereo\sistema aéreo\aereo 003.jpg=
+f:\aereo\sistema aéreo\aereo 004.jpg=
+f:\aereo\sistema aéreo\icon_136.ico=
+f:\aereo\sistema aéreo\winxpsetv3 icon 33.ico=
+f:\aereo\sistema aéreo\winxpsetv3 icon 45.ico=
+f:\aereo\sistema aéreo\winxpsetv3 icon 47.ico=
+f:\aereo\sistema aéreo\wpaback.jpg=
+f:\aereo\sistema aéreo\wpakey.jpg=
+
+[Package|Standard Setup Package 1|Files Removed]
+
+[Package|Standard Setup Package 1|Files In Project]
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Arquivos de programas\Arquivos comuns\designer\MSDERUN.DLL=Yes
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+F:\Aereo\Sistema Aéreo\AEREO 001.JPG=Yes
+F:\Aereo\Sistema Aéreo\Atualiza Sistema Aereo.BAT=Yes
+F:\Aereo\Sistema Aéreo\AEREO 002.JPG=Yes
+F:\Aereo\Sistema Aéreo\AEREO 003.JPG=Yes
+F:\Aereo\Sistema Aéreo\AEREO 004.JPG=Yes
+F:\Aereo\Sistema Aéreo\Icon_136.ico=Yes
+F:\Aereo\Sistema Aéreo\WinXPsetV3 Icon 33.ico=Yes
+F:\Aereo\Sistema Aéreo\WinXPsetV3 Icon 45.ico=Yes
+F:\Aereo\Sistema Aéreo\WinXPsetV3 Icon 47.ico=Yes
+F:\Aereo\Sistema Aéreo\wpaback.jpg=Yes
+F:\Aereo\Sistema Aéreo\wpakey.jpg=Yes
+\\sidinei_unix\shared\Aereo\Aereo.exe=Yes
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\WINDOWS\system32\oleaut32.dll=Yes
+C:\WINDOWS\system32\olepro32.dll=Yes
+C:\WINDOWS\system32\asycfilt.dll=Yes
+C:\WINDOWS\system32\stdole2.tlb=Yes
+C:\WINDOWS\system32\msado25.tlb=Yes
+C:\WINDOWS\system32\MSBIND.DLL=Yes
+C:\WINDOWS\system32\MSSTDFMT.DLL=Yes
+C:\WINDOWS\system32\MSDBRPTR.DLL=Yes
+C:\Arquivos de programas\Microsoft Office\Office\EXCEL9.OLB=Yes
+C:\WINDOWS\system32\MSDATGRD.OCX=Yes
+C:\WINDOWS\system32\MSCOMCTL.OCX=Yes
+C:\WINDOWS\system32\TABCTL32.OCX=Yes
+C:\WINDOWS\system32\MSMASK32.OCX=Yes
+C:\WINDOWS\system32\MSFLXGRD.OCX=Yes
+C:\WINDOWS\system32\MSHFLXGD.OCX=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+
+[Package|Standard Setup Package 1|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 1|Install Locations]
+F:\Aereo\Sistema Aéreo\Aereo.exe=$(AppPath)
+C:\WINDOWS\SYSTEM\MSVBVM60.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\MSDATGRD.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSSTDFMT.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\TABCTL32.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSMASK32.OCX=$(WinSysPath)
+C:\Arquivos de programas\Arquivos comuns\designer\MSDERUN.DLL=$(CommonFiles)\designer
+C:\Arquivos de programas\Arquivos comuns\SYSTEM\ADO\msado25.tlb=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSBIND.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSFLXGRD.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSDBRPTR.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSHFLXGD.OCX=$(WinSysPath)
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\SYSTEM\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+F:\Aereo\Sistema Aéreo\AEREO 001.JPG=$(AppPath)
+F:\Aereo\Sistema Aéreo\Atualiza Sistema Aereo.BAT=$(AppPath)
+F:\Aereo\Sistema Aéreo\AEREO 002.JPG=$(AppPath)
+F:\Aereo\Sistema Aéreo\AEREO 003.JPG=$(AppPath)
+F:\Aereo\Sistema Aéreo\AEREO 004.JPG=$(AppPath)
+F:\Aereo\Sistema Aéreo\Icon_136.ico=$(AppPath)
+F:\Aereo\Sistema Aéreo\WinXPsetV3 Icon 33.ico=$(AppPath)
+F:\Aereo\Sistema Aéreo\WinXPsetV3 Icon 45.ico=$(AppPath)
+F:\Aereo\Sistema Aéreo\WinXPsetV3 Icon 47.ico=$(AppPath)
+F:\Aereo\Sistema Aéreo\wpaback.jpg=$(AppPath)
+F:\Aereo\Sistema Aéreo\wpakey.jpg=$(AppPath)
+\\sidinei_unix\shared\Aereo\Aereo.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\oleaut32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\olepro32.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\asycfilt.dll=$(WinSysPathSysFile)
+C:\WINDOWS\system32\stdole2.tlb=$(WinSysPathSysFile)
+C:\WINDOWS\system32\msado25.tlb=$(WinSysPath)
+C:\WINDOWS\system32\MSBIND.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSSTDFMT.DLL=$(WinSysPath)
+C:\WINDOWS\system32\MSDBRPTR.DLL=$(WinSysPath)
+C:\Arquivos de programas\Microsoft Office\Office\EXCEL9.OLB=$(WinSysPath)
+C:\WINDOWS\system32\MSDATGRD.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\system32\TABCTL32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSMASK32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSFLXGRD.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSHFLXGD.OCX=$(WinSysPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+
+[Package|Standard Setup Package 1|Configure Shared Files]
+Applicable=Yes
+F:\Aereo\Sistema Aéreo\Aereo.exe=No
+C:\Arquivos de programas\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+F:\Aereo\Sistema Aéreo\AEREO 001.JPG=No
+F:\Aereo\Sistema Aéreo\Atualiza Sistema Aereo.BAT=No
+F:\Aereo\Sistema Aéreo\AEREO 002.JPG=No
+F:\Aereo\Sistema Aéreo\AEREO 003.JPG=No
+F:\Aereo\Sistema Aéreo\AEREO 004.JPG=No
+F:\Aereo\Sistema Aéreo\Icon_136.ico=No
+F:\Aereo\Sistema Aéreo\WinXPsetV3 Icon 33.ico=No
+F:\Aereo\Sistema Aéreo\WinXPsetV3 Icon 45.ico=No
+F:\Aereo\Sistema Aéreo\WinXPsetV3 Icon 47.ico=No
+F:\Aereo\Sistema Aéreo\wpaback.jpg=No
+F:\Aereo\Sistema Aéreo\wpakey.jpg=No
+\\sidinei_unix\shared\Aereo\Aereo.exe=No
+
+[Package|Standard Setup Package 1|Distribution]
+Type=single
+Size=
+Title=Informa - Emisão Aérea
+
+[Package|Standard Setup Package 1|IconGroups]
+Group0=Informa
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 1|Informa]
+Icon1=Aereo.exe
+Title1=Emisão Aérea
+StartIn1=$(AppPath)
+Key1=Icon1
+Icon2="Atualiza Sistema Aereo.BAT"
+Title2=Atualiza Sistema Aereo
+StartIn2=$(AppPath)
+Key2=Icon5
+
+[Package|Standard Setup Package 1|Package]
+PackageFolder=F:\Informa\SysAereo
+ProjectFolder=C:\Sistema Aéreo
+ServerSideCab=
+File1=F:\Informa\SysAereo\setup.exe
+File2=F:\Informa\SysAereo\Setup.Lst
+File3=F:\Informa\SysAereo\Aereo.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

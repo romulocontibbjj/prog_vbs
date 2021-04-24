@@ -1,0 +1,238 @@
+VB6  Key Codes
+==============
+Constant      Value  Description
+vbKeyLButton  &H1    Left mouse button
+vbKeyRButton  &H2    Right mouse button
+vbKeyCancel   &H3    CANCEL key
+vbKeyMButton  &H4    Middle mouse button
+vbKeyBack     &H8    BACKSPACE key
+vbKeyTab      &H9    TAB key
+vbKeyClear    &HC    CLEAR key
+vbKeyReturn   &HD    ENTER key
+vbKeyShift    &H10   SHIFT key
+vbKeyControl  &H11   CTRL key
+vbKeyMenu     &H12   MENU key
+vbKeyPause    &H13   PAUSE key
+vbKeyCapital  &H14   CAPS LOCK key
+vbKeyEscape   &H1B   ESC key
+vbKeySpace    &H20   SPACEBAR key
+vbKeyPageUp   &H21   PAGE UP key
+vbKeyPageDown &H22   PAGE DOWN key
+vbKeyEnd      &H23   END key
+vbKeyHome     &H24   HOME key
+vbKeyLeft     &H25   LEFT ARROW key
+vbKeyUp       &H26   UP ARROW key
+vbKeyRight    &H27   RIGHT ARROW key
+vbKeyDown     &H28   DOWN ARROW key
+vbKeySelect   &H29   SELECT key
+vbKeyPrint    &H2A   PRINT SCREEN key
+vbKeyExecute  &H2B   EXECUTE key
+vbKeySnapshot &H2C   SNAPSHOT key
+vbKeyInsert   &H2D   INS key
+vbKeyDelete   &H2E   DEL key
+vbKeyHelp     &H2F   HELP key
+vbKeyNumlock  &H90   NUM LOCK key
+
+KeyA Through KeyZ Are the Same as Their ASCII Equivalents: 'A' Through 'Z'
+Constant Value Description
+vbKeyA   65    A key
+vbKeyB   66    B key
+vbKeyC   67    C key
+vbKeyD   68    D key
+vbKeyE   69    E key
+vbKeyF   70    F key
+vbKeyG   71    G key
+vbKeyH   72    H key
+vbKeyI   73    I key
+vbKeyJ   74    J key
+vbKeyK   75    K key
+vbKeyL   76    L key
+vbKeyM   77    M key
+vbKeyN   78    N key
+vbKeyO   79    O key
+vbKeyP   80    P key
+vbKeyQ   81    Q key
+vbKeyR   82    R key
+vbKeyS   83    S key
+vbKeyT   84    T key
+vbKeyU   85    U key
+vbKeyV   86    V key
+vbKeyW   87    W key
+vbKeyX   88    X key
+vbKeyY   89    Y key
+vbKeyZ   90    Z key
+
+Key0 Through Key9 Are the Same as Their ASCII Equivalents: '0' Through '9
+Constant Value Description
+vbKey0    48    0 key
+vbKey1    49    1 key
+vbKey2    50    2 key
+vbKey3    51    3 key
+vbKey4    52    4 key
+vbKey5    53    5 key
+vbKey6    54    6 key
+vbKey7    55    7 key
+vbKey8    56    8 key
+vbKey9    57    9 key
+
+Keys on the Numeric Keypad
+Constant     Value Description
+vbKeyNumpad0 &H60  0 key
+vbKeyNumpad1 &H61  1 key
+vbKeyNumpad2 &H62  2 key
+vbKeyNumpad3 &H63  3 key
+vbKeyNumpad4 &H64  4 key
+vbKeyNumpad5 &H65  5 key
+vbKeyNumpad6 &H66  6 key
+vbKeyNumpad7 &H67  7 key
+vbKeyNumpad8 &H68  8 key
+vbKeyNumpad9 &H69  9 key
+vbKeyMultiply &H6A MULTIPLICATION SIGN (*) key
+vbKeyAdd      &H6B   PLUS SIGN (+) key
+vbKeySeparator &H6C ENTER (keypad) key
+vbKeySubtract &H6D  MINUS SIGN (-) key
+vbKeyDecimal  &H6E  DECIMAL POINT(.) key
+vbKeyDivide   &H6F  DIVISION SIGN (/) key
+
+Function Keys
+Constant Value Description
+vbKeyF1 &H70   F1 key
+vbKeyF2 &H71   F2 key
+vbKeyF3 &H72   F3 key
+vbKeyF4 &H73   F4 key
+vbKeyF5 &H74   F5 key
+vbKeyF6 &H75   F6 key
+vbKeyF7 &H76   F7 key
+vbKeyF8 &H77   F8 key
+vbKeyF9 &H78   F9 key
+vbKeyF10 &H79  F10 key
+vbKeyF11 &H7A  F11 key
+vbKeyF12 &H7B  F12 key
+vbKeyF13 &H7C  F13 key
+vbKeyF14 &H7D  F14 key
+vbKeyF15 &H7E  F15 key
+vbKeyF16 &H7F  F16 key
+
+
+
+Visual Basic .NET equivalents.
+==============================
+
+Visual Basic 6.0    Visual Basic .NET Equivalent
+vbKeyLButton (1)    System.Windows.Forms.Keys.LButton
+vbKeyRButton (2)    System.Windows.Forms.Keys.RButton
+vbKeyCancel (3)     System.Windows.Forms.Keys.Cancel
+vbKeyMButton (4)    System.Windows.Forms.Keys.MButton
+vbKeyBack (8)       System.Windows.Forms.Keys.Back
+vbKeyTab (9)        System.Windows.Forms.Keys.Tab
+vbKeyClear (12)     System.Windows.Forms.Keys.Clear
+vbKeyReturn (13)    System.Windows.Forms.Keys.Return
+vbKeyShift (16)     System.Windows.Forms.Keys.ShiftKey
+vbKeyControl (17)   System.Windows.Forms.Keys.ControlKey
+vbKeyMenu (18)      System.Windows.Forms.Keys.Menu
+vbKeyPause (19)     System.Windows.Forms.Keys.Pause
+vbKeyCapital (20)   System.Windows.Forms.Keys.Capital
+vbKeyEscape (27)    System.Windows.Forms.Keys.Escape
+vbKeySpace (32)     System.Windows.Forms.Keys.Space
+vbKeyPageUp (33)    System.Windows.Forms.Keys.PageUp
+vbKeyPageDown (34)  System.Windows.Forms.Keys.PageDown
+vbKeyEnd (35)       System.Windows.Forms.Keys.End
+vbKeyHome (36)      System.Windows.Forms.Keys.Home
+vbKeyLeft (37)      System.Windows.Forms.Keys.Left
+vbKeyUp (38)        System.Windows.Forms.Keys.Up
+vbKeyRight (39)     System.Windows.Forms.Keys.Right
+vbKeyDown (40)      System.Windows.Forms.Keys.Down
+vbKeySelect (41)    System.Windows.Forms.Keys.Select
+vbKeyPrint (42)     System.Windows.Forms.Keys.Print
+vbKeyExecute (43)   System.Windows.Forms.Keys.Execute
+vbKeySnapshot (44)  System.Windows.Forms.Keys.Snapshot
+vbKeyInsert (45)    System.Windows.Forms.Keys.Insert
+vbKeyDelete (46)    System.Windows.Forms.Keys.Delete
+vbKeyHelp (47)      System.Windows.Forms.Keys.Help
+vbKeyNumlock (144)  System.Windows.Forms.Keys.Numlock
+vbKeyScrollLock (145) System.Windows.Forms.Keys.Scroll
+
+Alphabetic Key Code Constants
+
+VB6     Visual Basic .NET Equivalent
+VbKeyA (65) System.Windows.Forms.Keys.A
+VbKeyB (66) System.Windows.Forms.Keys.B
+VbKeyC (67) System.Windows.Forms.Keys.C
+VbKeyD (68) System.Windows.Forms.Keys.D
+VbKeyE (69) System.Windows.Forms.Keys.E
+VbKeyF (70) System.Windows.Forms.Keys.F
+VbKeyG (71) System.Windows.Forms.Keys.G
+VbKeyH (72) System.Windows.Forms.Keys.H
+VbKeyI (73) System.Windows.Forms.Keys.I
+VbKeyJ (74) System.Windows.Forms.Keys.J
+VbKeyK (75) System.Windows.Forms.Keys.K
+VbKeyL( 76) System.Windows.Forms.Keys.L
+vbKeyM (77) System.Windows.Forms.Keys.M
+VbKeyN (78) System.Windows.Forms.Keys.N
+VbKeyO (79) System.Windows.Forms.Keys.O
+VbKeyP( 80) System.Windows.Forms.Keys.P
+VbKeyQ (81) System.Windows.Forms.Keys.Q
+VbKeyR (82) System.Windows.Forms.Keys.R
+VbKeyS (83) System.Windows.Forms.Keys.S
+VbKeyT (84) System.Windows.Forms.Keys.T
+VbKeyU (85) System.Windows.Forms.Keys.U
+VbKeyV (86) System.Windows.Forms.Keys.V
+VbKeyW (87) System.Windows.Forms.Keys.W
+VbKeyX (88) System.Windows.Forms.Keys.X
+VbKeyY (89) System.Windows.Forms.Keys.Y
+VbKeyZ (90) System.Windows.Forms.Keys.Z
+
+Numeric Key Constants
+
+VB6     Visual Basic .NET Equivalent
+vbKey0 (48) System.Windows.Forms.Keys.D0
+vbKey1 (49) System.Windows.Forms.Keys.D1
+vbKey2 (50) System.Windows.Forms.Keys.D2
+vbKey3 (51) System.Windows.Forms.Keys.D3
+vbKey4 (52) System.Windows.Forms.Keys.D4
+vbKey5 (53) System.Windows.Forms.Keys.D5
+vbKey6 (54) System.Windows.Forms.Keys.D6
+vbKey7 (55) System.Windows.Forms.Keys.D7
+vbKey8 (56) System.Windows.Forms.Keys.D8
+vbKey9 (57) System.Windows.Forms.Keys.D9
+
+Numeric Keypad Key Constants
+
+VB6                  Visual Basic .NET Equivalent
+vbKeyNumpad0 (96)    System.Windows.Forms.Keys.NumPad0
+vbKeyNumpad1 (97)    System.Windows.Forms.Keys.NumPad1
+vbKeyNumpad2 (98)    System.Windows.Forms.Keys.NumPad2
+vbKeyNumpad3 (99)    System.Windows.Forms.Keys.NumPad3
+vbKeyNumpad4 (100)   System.Windows.Forms.Keys.NumPad4
+vbKeyNumpad5 (101)   System.Windows.Forms.Keys.NumPad5
+vbKeyNumpad6 (102)   System.Windows.Forms.Keys.NumPad6
+vbKeyNumpad7 (103)   System.Windows.Forms.Keys.NumPad7
+vbKeyNumpad8 (104)   System.Windows.Forms.Keys.NumPad8
+vbKeyNumpad9 (105)   System.Windows.Forms.Keys.NumPad9
+VbKeyMultiply (106)  System.Windows.Forms.Keys.Multiply
+VbKeyAdd (107)       System.Windows.Forms.Keys.Add
+VbKeySeparator (108) System.Windows.Forms.Keys.Separator
+VbKeySubtract (109)  System.Windows.Forms.Keys.Subtract
+VbKeyDecimal (110)   System.Windows.Forms.Keys.Decimal
+VbKeyDivide (111)    System.Windows.Forms.Keys.Divide
+
+Function Key Constants
+
+vb6            Visual Basic .NET Equivalent
+vbKeyF1 (112)  System.Windows.Forms.Keys.F1
+vbKeyF2 (113)  System.Windows.Forms.Keys.F2
+vbKeyF3 (114)  System.Windows.Forms.Keys.F3
+vbKeyF4 (115)  System.Windows.Forms.Keys.F4
+vbKeyF5 (116)  System.Windows.Forms.Keys.F5
+vbKeyF6 (117)  System.Windows.Forms.Keys.F6
+vbKeyF7 (118)  System.Windows.Forms.Keys.F7
+vbKeyF8 (119)  System.Windows.Forms.Keys.F8
+vbKeyF9 (120)  System.Windows.Forms.Keys.F9
+vbKeyF10 (121) System.Windows.Forms.Keys.F10
+vbKeyF11 (122) System.Windows.Forms.Keys.F11
+vbKeyF12 (123) System.Windows.Forms.Keys.F12
+vbKeyF13 (124) System.Windows.Forms.Keys.F13
+vbKeyF14 (125) System.Windows.Forms.Keys.F14
+vbKeyF15 (126) System.Windows.Forms.Keys.F15
+vbKeyF16 (127) System.Windows.Forms.Keys.F16
+

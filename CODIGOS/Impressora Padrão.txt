@@ -1,0 +1,58 @@
+Faça o seguinte:
+
+1-) Inicie um novo projeto no VB e insira um módulo no menu Project|Add Module
+
+2-) A seguir insira o código abaixo no módulo :
+
+ 
+
+Private Declare Function GetProfileString Lib "kernel32.dll" Alias "GetProfileStringA" (ByVal lpAppName As String, ByVal lpKeyName As String, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Long) As Long 
+--------------------------------------------------------------------------------
+
+Public Function GetDefaultPrinter() As Printer
+Dim strBuffer As String * 254
+Dim iRetValue As Long
+Dim strDefaultPrinterInfo As String
+Dim tblDefaultPrinterInfo() As String
+Dim objPrinter As Printer
+
+' pega as informacoes da impressora padrao
+  iRetValue = GetProfileString("windows", "device", ",,,", strBuffer, 254)
+  strDefaultPrinterInfo = Left(strBuffer, InStr(strBuffer, Chr(0)) - 1)
+  tblDefaultPrinterInfo = Split(strDefaultPrinterInfo, ",")
+  For Each objPrinter In Printers
+        If objPrinter.DeviceName = tblDefaultPrinterInfo(0) Then
+          ' se achou a impressora padrao entao sai
+          Exit For
+        End If
+   Next
+   ' se nao achou retrona nothing
+  If objPrinter.DeviceName <> tblDefaultPrinterInfo(0) Then
+      Set objPrinter = Nothing
+  End If
+  Set GetDefaultPrinter = objPrinter
+End Function
+ 
+
+ 
+
+3-) No formulário padrão insira um botão de comando : command1 - &Impressora Padrão:
+
+Private Sub Command1_Click()
+
+Dim objPrinter As Printer
+Set objPrinter = GetDefaultPrinter()
+
+MsgBox "Impressora padrao => " + objPrinter.DeviceName & vbCrLf & _
+"Driver da impressora => " + objPrinter.DriverName & vbCrLf & _
+"A porta usada é a => " + objPrinter.Port
+
+Set objPrinter = Nothing
+
+End Sub 
+ & vbCrLf & _
+"A porta usada é a => " + objPrinter.Port
+
+Set objPrinter = Nothing
+
+End Sub 

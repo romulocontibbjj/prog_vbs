@@ -1,0 +1,115 @@
+[Root]
+Most Recent Package=My Custom FTP
+
+
+[Package|My Custom FTP|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\Documents and Settings\DIGIT\Desktop\New FTP\Package
+
+[Package|My Custom FTP|Configure DAO ISAMs]
+Applicable=No
+
+[Package|My Custom FTP|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|My Custom FTP|Files Found]
+
+[Package|My Custom FTP|Files Released]
+
+[Package|My Custom FTP|Missing Dependency Information]
+
+[Package|My Custom FTP|Out-of-Date Dependency Information]
+C:\WINDOWS\system32\scrrun.dll=
+
+[Package|My Custom FTP|Files Added]
+C:\Documents and Settings\DIGIT\Desktop\New FTP\ftp.ico=
+C:\Documents and Settings\DIGIT\Desktop\New FTP\NOTE07.ICO=
+C:\Documents and Settings\DIGIT\Desktop\New FTP\OPENFOLD.ICO=
+C:\Documents and Settings\DIGIT\Desktop\New FTP\CLSDFOLD.ICO=
+
+[Package|My Custom FTP|Files Removed]
+
+[Package|My Custom FTP|Files In Project]
+C:\Documents and Settings\DIGIT\Desktop\New FTP\My Custom FTP.exe=Yes
+C:\WINDOWS\system32\msvbvm60.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\system32\scrrun.dll=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT.DLL=Yes
+C:\WINDOWS\system32\MSINET.OCX=Yes
+C:\WINDOWS\system32\COMDLG32.OCX=Yes
+C:\WINDOWS\system32\MSCOMCTL.OCX=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\system32\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\Documents and Settings\DIGIT\Desktop\New FTP\ftp.ico=Yes
+C:\Documents and Settings\DIGIT\Desktop\New FTP\NOTE07.ICO=Yes
+C:\Documents and Settings\DIGIT\Desktop\New FTP\OPENFOLD.ICO=Yes
+C:\Documents and Settings\DIGIT\Desktop\New FTP\CLSDFOLD.ICO=Yes
+
+[Package|My Custom FTP|Configure Registry Files]
+Applicable=No
+
+[Package|My Custom FTP|Configure Remote Servers]
+Applicable=No
+
+[Package|My Custom FTP|Install Locations]
+C:\Documents and Settings\DIGIT\Desktop\New FTP\My Custom FTP.exe=$(AppPath)
+C:\WINDOWS\system32\msvbvm60.dll=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\scrrun.dll=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\system32\MSINET.OCX=$(WinSysPath)
+C:\WINDOWS\system32\COMDLG32.OCX=$(WinSysPath)
+C:\WINDOWS\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\Documents and Settings\DIGIT\Desktop\New FTP\ftp.ico=$(AppPath)
+C:\Documents and Settings\DIGIT\Desktop\New FTP\NOTE07.ICO=$(AppPath)
+C:\Documents and Settings\DIGIT\Desktop\New FTP\OPENFOLD.ICO=$(AppPath)
+C:\Documents and Settings\DIGIT\Desktop\New FTP\CLSDFOLD.ICO=$(AppPath)
+
+[Package|My Custom FTP|Configure Shared Files]
+Applicable=Yes
+C:\Documents and Settings\DIGIT\Desktop\New FTP\My Custom FTP.exe=Yes
+C:\Documents and Settings\DIGIT\Desktop\New FTP\ftp.ico=Yes
+C:\Documents and Settings\DIGIT\Desktop\New FTP\NOTE07.ICO=Yes
+C:\Documents and Settings\DIGIT\Desktop\New FTP\OPENFOLD.ICO=Yes
+C:\Documents and Settings\DIGIT\Desktop\New FTP\CLSDFOLD.ICO=Yes
+
+[Package|My Custom FTP|Distribution]
+Type=single
+Size=
+Title=Custom FTP
+
+[Package|My Custom FTP|IconGroups]
+Group0=Custom FTP
+PrivateGroup0=-1
+Parent0=$(Programs)
+
+[Package|My Custom FTP|Custom FTP]
+Icon1="My Custom FTP.exe"
+Title1=Custom FTP
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|My Custom FTP|Package]
+PackageFolder=C:\Documents and Settings\DIGIT\Desktop\New FTP\Package
+ProjectFolder=C:\Documents and Settings\DIGIT\Desktop\New FTP
+ServerSideCab=
+File1=C:\Documents and Settings\DIGIT\Desktop\New FTP\Package\setup.exe
+File2=C:\Documents and Settings\DIGIT\Desktop\New FTP\Package\Setup.Lst
+File3=C:\Documents and Settings\DIGIT\Desktop\New FTP\Package\My Custom FTP.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz

@@ -1,0 +1,98 @@
+VERSION 5.00
+Begin VB.PropertyPage Creditos 
+   BackColor       =   &H00000000&
+   Caption         =   "x_Creditos_x"
+   ClientHeight    =   2985
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   5475
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   2985
+   ScaleWidth      =   5475
+   Begin VB.Label Label1 
+      Alignment       =   2  'Center
+      BorderStyle     =   1  'Fixed Single
+      Caption         =   "Ultima Atualização 12/09/2006"
+      Height          =   255
+      Left            =   15
+      TabIndex        =   3
+      Top             =   2715
+      Width           =   5445
+   End
+   Begin VB.Label Label3 
+      Alignment       =   2  'Center
+      BackColor       =   &H00C0FFC0&
+      Caption         =   "Componente Freeware"
+      BeginProperty Font 
+         Name            =   "Times New Roman"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00FF0000&
+      Height          =   255
+      Left            =   30
+      TabIndex        =   2
+      Top             =   2445
+      Width           =   5430
+   End
+   Begin VB.Image Image1 
+      Height          =   480
+      Left            =   4605
+      Picture         =   "Comentarios.pgx":0000
+      Top             =   1020
+      Width           =   480
+   End
+   Begin VB.Label Label2 
+      AutoSize        =   -1  'True
+      BackStyle       =   0  'Transparent
+      Caption         =   "By Cleverton - www.vbmania.com.br"
+      BeginProperty Font 
+         Name            =   "Arial"
+         Size            =   9
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H000000FF&
+      Height          =   225
+      Left            =   1125
+      TabIndex        =   1
+      Top             =   1230
+      Width           =   2940
+   End
+   Begin VB.Label lblVersao 
+      Alignment       =   2  'Center
+      BackStyle       =   0  'Transparent
+      BeginProperty Font 
+         Name            =   "Comic Sans MS"
+         Size            =   12
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H000000FF&
+      Height          =   345
+      Left            =   90
+      TabIndex        =   0
+      Top             =   630
+      Width           =   5310
+   End
+End
+Attribute VB_Name = "Creditos"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+
+Private Sub PropertyPage_Initialize()
+lblVersao.Caption = "cTextBox - Compilação " & App.Major & "." & App.Minor & "." & App.Revision
+End Sub

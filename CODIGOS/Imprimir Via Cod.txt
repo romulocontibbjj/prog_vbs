@@ -1,0 +1,51 @@
+-----------------------------------------------------------------------
+FUNCTIONS PARA IMPRESSÃO VIA CÓDIGO
+-----------------------------------------------------------------------
+
+
+IMPRIMIR
+-----------------------------------------------------------------------
+
+Function Lprint(x As Integer, y As Integer, s As String)
+
+Printer.CurrentX = x             'coluna
+Printer.CurrentY = y             'linha
+Printer.Print s
+
+End Function
+
+
+TROCAR DE PAGINA
+-----------------------------------------------------------------------
+
+Function Alimenta()
+
+Printer.NewPage                             
+Printer.Print ""                           
+Printer.Font = ""	
+Printer.FontName = "Courier New"           
+Printer.FontSize = 14                      
+
+End Function
+
+
+ALINHAR
+-----------------------------------------------------------------------
+
+Function Alinha(s As String, T As Integer, Posicao As String) As String
+
+'S = String para alinhar
+'T = Tamanho do campo para alinhar
+'P = Dir:Direita, Esq:Esquerda
+
+If UCase(Posicao) = "ESQ" Then
+	Alinha = s + Space(T - Len(s))
+   	Else
+        Alinha = Space(T - Len(s)) + s
+End If
+
+End Function
+ Space(T - Len(s)) + s
+End If
+
+End Function
